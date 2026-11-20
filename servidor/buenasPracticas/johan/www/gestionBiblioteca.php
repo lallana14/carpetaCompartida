@@ -16,6 +16,11 @@ $editoriales = [];
 $error = null;
 $mensaje = '';
 
+// Número de libros a mostrar (1-3), elegido en el desplegable. Si no llega o no es válido, 1.
+$cantidad = filter_input(INPUT_GET, 'cantidad', FILTER_VALIDATE_INT, [
+    'options' => ['min_range' => 1, 'max_range' => 3, 'default' => 1]
+]) ?: 1;
+
 try {
     $conexion = conectarAdmin();
     
@@ -90,9 +95,22 @@ try {
         <p style="color: red; font-weight: bold;"><?= htmlspecialchars($error) ?></p>
     <?php endif; ?>
     
-    <form action="gestionBiblioteca.php" method="post" class="formulario">
+    <!-- Paso 1: elegir cuántos libros se van a añadir (GET: solo cambia lo que se muestra) -->
+    <form action="gestionBiblioteca.php" method="get" class="formulario">
+        <label>¿Cuántos libros quieres añadir?
+            <select name="cantidad" onchange="this.form.submit()">
+                <?php for ($n = 1; $n <= 3; $n++): ?>
+                    <option value="<?= $n ?>" <?= $n === $cantidad ? 'selected' : '' ?>><?= $n ?></option>
+                <?php endfor; ?>
+            </select>
+        </label>
+        <input type="submit" value="Mostrar">
+    </form>
+
+    <!-- Paso 2: datos de los libros (POST: guarda en la BD) -->
+    <form action="gestionBiblioteca.php?cantidad=<?= $cantidad ?>" method="post" class="formulario">
         <div id="libros">
-            <?php for ($indice = 0; $indice < 3; $indice++): ?>
+            <?php for ($indice = 0; $indice < $cantidad; $indice++): ?>
                 <fieldset class="libro">
                     <legend>Libro <?= $indice + 1 ?></legend>
                     <label>ISBN: <input type="text" name="ISBN[]" required></label><br>
