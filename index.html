@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis asignaturas</title>
+<style>
+  :root { --fondo: #f6f7f9; --panel: #fff; --borde: #e3e6eb; --texto: #1d2330; --suave: #667085; --acento: #c99a00; --acento-fondo: #fff6d6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fondo: #0f1218; --panel: #171b23; --borde: #2a303b; --texto: #e6e9ef; --suave: #8b94a5; --acento: #f7d046; --acento-fondo: #2b2510; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--fondo); color: var(--texto); }
+  .contenedor { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+  h1 { margin: 0 0 4px; font-size: 28px; }
+  .sub { color: var(--suave); margin: 0 0 28px; }
+  .sub a { color: inherit; }
+  .rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+  .asignatura { background: var(--panel); border: 1px solid var(--borde); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .asignatura h2 { margin: 0; font-size: 20px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .asignatura h2 a { font-size: 13px; font-weight: 500; color: var(--suave); text-decoration: none; border: 1px solid var(--borde); padding: 3px 10px; border-radius: 8px; white-space: nowrap; }
+  .asignatura h2 a:hover { border-color: var(--acento); color: var(--texto); }
+  .destacado { display: block; background: var(--acento-fondo); border: 1px solid var(--acento); border-radius: 10px; padding: 12px 14px; color: var(--texto); text-decoration: none; font-weight: 600; }
+  .destacado small { display: block; font-weight: 400; color: var(--suave); }
+  .destacado:hover { filter: brightness(.97); }
+  .nota { font-size: 13px; color: var(--suave); background: var(--fondo); border-radius: 8px; padding: 8px 10px; }
+  details summary { cursor: pointer; color: var(--suave); font-size: 14px; }
+  ul { margin: 8px 0 0; padding-left: 18px; font-size: 14px; }
+  li { margin: 2px 0; }
+  li a { color: var(--texto); }
+  li .carpeta { color: var(--suave); }
+  .vacio { color: var(--suave); font-size: 14px; }
+  .estado { margin-bottom: 16px; font-size: 13px; color: var(--suave); }
+</style>
+</head>
+<body>
+<div class="contenedor">
+  <h1>📚 Mis asignaturas</h1>
+  <p class="sub">Apuntes y prácticas · <a id="enlace-repo" href="#">ver el repositorio en GitHub</a></p>
+  <div class="estado" id="estado">⏳ Cargando…</div>
+  <div class="rejilla" id="rejilla"></div>
+</div>
+
+<script>
+// Repositorio por defecto si la portada se abre con doble clic (en la web se deduce de la dirección)
+const REPO_GITHUB = { usuario: "lallana14", repo: "carpetaCompartida" };
+
+const $ = id => document.getElementById(id);
+const escapar = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const natural = new Intl.Collator("es", { numeric: true, sensitivity: "base" }).compare;
+const capitalizar = s => s.charAt(0).toUpperCase() + s.slice(1);
+const codificar = ruta => ruta.split("/").map(encodeURIComponent).join("/");
+
+function repositorio() {
+  if (location.hostname.endsWith(".github.io")) {
+    const repo = location.pathname.split("/").filter(Boolean)[0];
+    return { usuario: location.hostname.split(".")[0], repo, enPages: true };
+  }
+  return { ...REPO_GITHUB, enPages: false };
+}
+
+const { usuario, repo, enPages } = repositorio();
+const urlGitHub = carpeta => `https://github.com/${usuario}/${repo}/tree/HEAD/${codificar(carpeta)}`;
+// En la web las páginas se abren desde la propia web; con doble clic, desde la web de GitHub Pages
+const urlPagina = ruta => (enPages ? "" : `https://${usuario}.github.io/${repo}/`) + codificar(ruta).replace(/index\.html$/, "");
+$("enlace-repo").href = `https://github.com/${usuario}/${repo}`;
+
+function pintar(rutas) {
+  const asignaturas = new Map();
+  for (const ruta of rutas) {
+    const [asignatura, ...resto] = ruta.split("/");
+    if (!resto.length || asignatura.startsWith(".")) continue; // archivos sueltos en la raíz (como esta portada)
+    if (!asignaturas.has(asignatura)) asignaturas.set(asignatura, { indices: [], paginas: [], php: false });
+    const a = asignaturas.get(asignatura);
+    if (/\.php$/i.test(ruta)) a.php = true;
+    if (!/\.html?$/i.test(ruta)) continue;
+    // Un index.html junto a carpetas de temas es un índice de apuntes (como cliente/APUNTES)
+    const carpeta = ruta.slice(0, ruta.lastIndexOf("/"));
+    const esIndice = /\/index\.html$/i.test(ruta) && rutas.some(r => r.startsWith(carpeta + "/") && r.split("/").length > carpeta.split("/").length + 2);
+    (esIndice ? a.indices : a.paginas).push(ruta);
+  }
+
+  const tarjetas = [...asignaturas.keys()].sort(natural).map(nombre => {
+    const a = asignaturas.get(nombre);
+    const indices = a.indices.map(r => {
+      const carpeta = r.split("/").slice(1, -1).join(" / ");
+      return `<a class="destacado" href="${urlPagina(r)}">📘 Índice de ${escapar(carpeta || "apuntes")}<small>Todo el código navegable, con buscador y ejecución</small></a>`;
+    }).join("");
+    // Las páginas de una carpeta con índice ya se ven desde el índice: no se repiten aquí
+    const carpetasConIndice = a.indices.map(r => r.slice(0, r.lastIndexOf("/") + 1));
+    const paginas = a.paginas.filter(r => !carpetasConIndice.some(c => r.startsWith(c))).sort(natural);
+    const lista = paginas.length ? `<details><summary>${paginas.length} página${paginas.length === 1 ? "" : "s"} HTML</summary><ul>${
+      paginas.map(r => {
+        const partes = r.split("/").slice(1);
+        const archivo = partes.pop();
+        return `<li><a href="${urlPagina(r)}">${escapar(archivo)}</a> ${partes.length ? `<span class="carpeta">· ${escapar(partes.join("/"))}</span>` : ""}</li>`;
+      }).join("")}</ul></details>` : "";
+    const nota = a.php ? `<div class="nota">🐘 Los archivos PHP no se pueden ejecutar en GitHub Pages: ábrelos en GitHub para ver el código.</div>` : "";
+    return `<section class="asignatura">
+      <h2>${escapar(capitalizar(nombre))} <a href="${urlGitHub(nombre)}">Ver en GitHub ↗</a></h2>
+      ${indices}${nota}${lista || (indices ? "" : '<div class="vacio">Sin páginas HTML.</div>')}
+    </section>`;
+  });
+  $("rejilla").innerHTML = tarjetas.join("") || '<div class="vacio">No hay carpetas en el repositorio.</div>';
+}
+
+(async () => {
+  try {
+    const r = await fetch(`https://api.github.com/repos/${usuario}/${repo}/git/trees/HEAD?recursive=1`);
+    if (!r.ok) throw new Error(r.status === 403 ? "límite de consultas de GitHub alcanzado, prueba en un rato" : "GitHub respondió " + r.status);
+    const { tree } = await r.json();
+    pintar(tree.filter(n => n.type === "blob").map(n => n.path));
+    $("estado").textContent = "🟢 Actualizado desde GitHub";
+  } catch (e) {
+    const motivo = e instanceof TypeError ? "sin conexión con GitHub" : e.message;
+    $("estado").textContent = `⚠️ No se pudo leer el repositorio (${motivo}). Ábrelo directamente en GitHub con el enlace de arriba.`;
+  }
+})();
+</script>
+</body>
+</html>
