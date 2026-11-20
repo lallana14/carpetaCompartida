@@ -23,6 +23,9 @@
   .destacado { display: block; background: var(--acento-fondo); border: 1px solid var(--acento); border-radius: 10px; padding: 12px 14px; color: var(--texto); text-decoration: none; font-weight: 600; }
   .destacado small { display: block; font-weight: 400; color: var(--suave); }
   .destacado:hover { filter: brightness(.97); }
+  .explorar { display: block; border: 1px solid var(--borde); border-radius: 10px; padding: 12px 14px; color: var(--texto); text-decoration: none; font-weight: 600; }
+  .explorar small { display: block; font-weight: 400; color: var(--suave); }
+  .explorar:hover { border-color: var(--acento); }
   .nota { font-size: 13px; color: var(--suave); background: var(--fondo); border-radius: 8px; padding: 8px 10px; }
   details summary { cursor: pointer; color: var(--suave); font-size: 14px; }
   ul { margin: 8px 0 0; padding-left: 18px; font-size: 14px; }
@@ -98,6 +101,7 @@ function pintar(rutas) {
     const nota = a.php ? `<div class="nota">🐘 Los archivos PHP no se pueden ejecutar en GitHub Pages: ábrelos en GitHub para ver el código.</div>` : "";
     return `<section class="asignatura">
       <h2>${escapar(capitalizar(nombre))} <a href="${urlGitHub(nombre)}">Ver en GitHub ↗</a></h2>
+      <a class="explorar" href="${(enPages ? "" : `https://${usuario}.github.io/${repo}/`) + "explorador.html?asignatura=" + encodeURIComponent(nombre)}">🔎 Explorar código<small>Todas sus carpetas, con buscador${a.php ? " (el PHP solo se puede ver)" : " y ejecución"}</small></a>
       ${indices}${nota}${lista || (indices ? "" : '<div class="vacio">Sin páginas HTML.</div>')}
     </section>`;
   });
