@@ -1463,15 +1463,33 @@ function agrupar(archivos) {
   return lecciones;
 }
 
-// ---------- Leer los archivos en directo desde GitHub Pages ----------
-// Dirección tipo https://usuario.github.io/repositorio/carpeta/index.html
+// ---------- Leer los archivos en directo desde GitHub ----------
+// Repositorio del que leer cuando el índice se abre con doble clic (en local no se puede deducir de la dirección)
+const REPO_GITHUB = {"usuario": "lallana14", "repo": "carpetaCompartida", "carpeta": "cliente/APUNTES"};
+
+// En GitHub Pages (https://usuario.github.io/repositorio/carpeta/) se deduce de la dirección;
+// en local se usa REPO_GITHUB.
+function repositorio() {
+  if (location.hostname.endsWith(".github.io")) {
+    const segmentos = decodeURIComponent(location.pathname).split("/").filter(Boolean);
+    if (segmentos.length && /\.html?$/i.test(segmentos[segmentos.length - 1])) segmentos.pop();
+    const [repo, ...resto] = segmentos;
+    return { usuario: location.hostname.split(".")[0], repo, carpeta: resto.join("/"), enPages: true };
+  }
+  return REPO_GITHUB && { ...REPO_GITHUB, enPages: false };
+}
+
 async function cargarDesdeGitHub() {
-  if (!location.hostname.endsWith(".github.io")) return null;
-  const usuario = location.hostname.split(".")[0];
-  const segmentos = decodeURIComponent(location.pathname).split("/").filter(Boolean);
-  if (segmentos.length && /\.html?$/i.test(segmentos[segmentos.length - 1])) segmentos.pop();
-  const [repo, ...resto] = segmentos;
-  const prefijo = resto.length ? resto.join("/") + "/" : "";
+  const origen = repositorio();
+  if (!origen) return null;
+  const { usuario, repo, carpeta, enPages } = origen;
+  const prefijo = carpeta ? carpeta + "/" : "";
+  // En Pages se pide a la propia web; en local, a raw.githubusercontent.com (GitHub lo permite desde cualquier página)
+  const urlArchivo = ruta => {
+    const codificada = ruta.split("/").map(encodeURIComponent).join("/");
+    return enPages ? codificada
+      : `https://raw.githubusercontent.com/${usuario}/${repo}/HEAD/${(prefijo + ruta).split("/").map(encodeURIComponent).join("/")}`;
+  };
 
   // 1) La lista de archivos del repositorio (una sola petición a la API de GitHub)
   const r = await fetch(`https://api.github.com/repos/${usuario}/${repo}/git/trees/HEAD?recursive=1`);
@@ -1484,7 +1502,7 @@ async function cargarDesdeGitHub() {
 
   // 2) El contenido de cada archivo, pedido a la propia web (mismo sitio, así que el navegador lo permite)
   const archivos = await Promise.all(rutas.map(async ruta => {
-    const resp = await fetch(ruta.split("/").map(encodeURIComponent).join("/"), { cache: "no-cache" });
+    const resp = await fetch(urlArchivo(ruta), { cache: "no-cache" });
     if (!resp.ok) throw new Error("no se pudo leer " + ruta);
     return { ruta, codigo: await resp.text() };
   }));
@@ -1714,7 +1732,8 @@ function mostrar(archivos, origen, clase) {
     mostrar(COPIA.archivos, `📦 Copia guardada del ${COPIA.fecha}`, "copia");
   } catch (e) {
     console.warn(e);
-    mostrar(COPIA.archivos, `⚠️ Copia del ${COPIA.fecha} (${e.message})`, "aviso");
+    const motivo = e instanceof TypeError ? "sin conexión con GitHub" : e.message; // fetch lanza TypeError si no hay red
+    mostrar(COPIA.archivos, `⚠️ Copia del ${COPIA.fecha} (${motivo})`, "aviso");
   }
 })();
 </script>
