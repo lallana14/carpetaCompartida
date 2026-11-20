@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //sintaxis
+        //function nombre_funcion(parametro1, parametro2, ...){...}
+        function saludo(){
+            alert("Hola");
+        }
+
+        let resultado = saludo();
+        alert(resultado);
+        //guardas la funcion en una variable o mostrarla
+        let resultadoSaludoSinParentesis = saludo;
+        alert(resultadoSaludoSinParentesis);
+
+        //funciones con parametros
+        function producto(a,b){
+            return a*b;
+        }
+        let resultadoProducto = producto(5,10);
+        alert(resultadoProducto);
+
+    </script>
+</body>
+</html>

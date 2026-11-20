@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let concesionario = ["Kia","Volkswagen","Maserati","Pagani","Ford"];
+
+        function modificar(array, posicion, cantBorrar, elems) {
+            let tamañoInicial = array.length;
+            let copia = [];
+
+            // Comprobar que posicion es un número
+            if (typeof posicion !== "number" || !Number.isInteger(posicion)) {
+                console.log("La posición debe ser un número entero");
+                return;
+            }
+
+            // Comprobar que cantBorrar es un número
+            if (typeof cantBorrar !== "number" || !Number.isInteger(cantBorrar)) {
+                console.log("La cantidad a borrar debe ser un número entero");
+                return;
+            }
+
+            // Comprobar que la cantidad a borrar no sea negativa
+            if (cantBorrar < 0) {
+                console.log("La cantidad de elementos a borrar no puede ser negativa");
+                return;
+            }
+
+            // Si elems no es un array, convertirlo en uno
+            if (!Array.isArray(elems)) {
+                elems = [elems];
+            }
+
+            // Si la posición es negativa, contar desde el final
+            if (posicion < 0) {
+                posicion = tamañoInicial + posicion;
+            }
+
+            // Comprobar que la posición es válida
+            if (posicion < 0 || posicion > tamañoInicial) {
+                console.log("La posición está fuera de los límites del array");
+                return;
+            }
+
+            // Comprobar que no se borren más elementos de los disponibles
+            if (cantBorrar > tamañoInicial - posicion) {
+                console.log("La cantidad a borrar es mayor que la longitud del array desde la posición indicada");
+                return;
+            }
+
+            // Copiar los elementos anteriores a la posición indicada
+            for (let i = 0; i < posicion; i++) {
+                copia[copia.length] = array[i];
+            }
+
+            // Insertar los nuevos elementos
+            for (let j = 0; j < elems.length; j++) {
+                copia[copia.length] = elems[j];
+            }
+
+            // Copiar los elementos que quedan después de borrar
+            for (let i = posicion + cantBorrar; i < tamañoInicial; i++) {
+                copia[copia.length] = array[i];
+            }
+
+            console.log(copia);
+
+            return copia;
+        }
+
+        modificar(concesionario, 2, 1, ["Ferrari"]); // Ejemplo de uso
+    </script>
+</body>
+</html>

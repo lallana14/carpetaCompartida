@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objetoMath</title>
+</head>
+<body>
+    <script>
+        /*
+        CARACTERISTICAS
+        - Permite realizar operaciones matematicas
+        - No existe el constructor new Math()
+
+        PROPIEDADES
+        */
+       let pi = Math.PI;
+       console.log("PI: " + pi);
+       let e = Math.E;
+       console.log("E: " + e);
+       let ln2 = Math.LN2;
+       console.log("LN2: " + ln2);
+       let ln10 = Math.LN10;
+       console.log("LN10: " + ln10);
+
+       //METODOS
+       //random(): devuelve un numero aleatorio entre 0 y 1
+       console.log("num aleatorio: "+Math.random());
+       console.log("numero aleatorio entre 0 y 9: "+Math.floor(Math.random()*10));
+
+       //max(lista de valores)/ min(lista de valores)
+       console.log("Num max" + Math.max(1, 2, 6, 12, 9, 3));
+       console.log("Num min" + Math.min(1, 2, 6, 12, 9, 3));
+
+       //round(num): redondea al entero mas cercano
+       console.log("Redondeo: " + Math.round(3.5));
+       console.log("Redondeo: " + Math.round(3.4));
+       console.log("Redondeo: " + Math.round(3.6));
+
+        //ceil(num): redondea al entero superior
+        console.log("Redondeo: " + Math.ceil(3.5));
+
+        //floor(num): redondea al entero inferior
+        console.log("Redondeo: " + Math.floor(3.5));
+
+        //pow(base, exponente): devuelve el valor de la base elevado al exponente
+        console.log("Potencia: " + Math.pow(2, 3));
+
+        //sqrt(num): devuelve la raiz cuadrada de num
+        console.log("Raiz cuadrada: " + Math.sqrt(9));
+
+        //abs(num): devuelve el valor absoluto de num
+        console.log("Valor absoluto: " + Math.abs(5));
+        console.log("Valor absoluto: " + Math.abs(-5));
+
+        //Metodos trigonometricos
+        // sin, cos, tan, asin, acos, atan
+    </script>
+</body>
+</html>

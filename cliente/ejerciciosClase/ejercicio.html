@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Max y Min con Spread</title>
+</head>
+<body>
+    <script>
+
+        // Ordena de menor a mayor
+        function ordenaCreciente(...array) {
+            let nuevoArray = [];
+
+            while (array.length > 0) {
+                let menor = Math.min(...array);
+
+                nuevoArray.push(menor);
+
+                array.splice(array.indexOf(menor), 1);
+            }
+
+            return nuevoArray;
+        }
+
+        // Ordena de mayor a menor
+        function ordenaDecreciente(...array) {
+            let nuevoArray = [];
+
+            while (array.length > 0) {
+                let mayor = Math.max(...array);
+
+                nuevoArray.push(mayor);
+
+                array.splice(array.indexOf(mayor), 1);
+            }
+
+            return nuevoArray;
+        }
+
+        // Ordena según el parámetro indicado
+        function ordena(array, orden) {
+            orden = orden.toLowerCase();
+
+            if (orden == "creciente") {
+                return ordenaCreciente(...array);
+
+            } else if (orden == "decreciente") {
+                return ordenaDecreciente(...array);
+
+            } else {
+                console.log("Error: el parámetro 'orden' debe ser 'creciente' o 'decreciente'");
+            }
+        }
+
+        let cad = [1, 43, 63, 1, 34, 67, 2, 4];
+        console.log(cad);
+
+        cad = ordena(cad, "creciente");
+        console.log(cad);
+
+        cad = ordena(cad, "decreciente");
+        console.log(cad);
+
+    </script>
+</body>
+</html>

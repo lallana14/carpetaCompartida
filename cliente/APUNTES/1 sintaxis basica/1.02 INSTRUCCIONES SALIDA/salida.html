@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <h1 id="elemento">Buenas tardes</h1>
+        <h3>Instrucciones de salida</h3>
+        <p id="parrafo">Las instrucciones de salida son aquellas que permiten mostrar información en la pantalla del usuario</p>
+        
+        <script><!-- sirven para mostrar cosas en la pantalla -->
+            alert(5+10);
+            console.log(1);
+            document.write("Hola");
+            document.getElementById("elemento").innerHTML = "<h5>Buenas noches</h5>";
+            document.write('<h1>Basicas de JavaScript</h1>');
+            document.getElementById("parrafo").innerHTML = "<p>Esta es una nueva versión del párrafo</p>";
+            document.getElementById("parrafo").style.color = "red";
+        </script>
+
+        <p id="parrafo2">Para este parrafo no haremos nada</p>
+
+        <script>
+            console.log(2);
+            alert("Hola");
+            console.log(3);
+            document.write("<h1>Hola2</h1>");
+            document.getElementById("parrafo2").innerHTML = "chequea cambio despues del script";
+            console.log(4);
+        </script>
+
+        <p>parrafo sin cambiar</p>
+    </body>
+</html>
+<!--Mario Lallana Campos-->
+<!--IES Virgen del Espino-->
+<!--DAW2 - 2026/27-->

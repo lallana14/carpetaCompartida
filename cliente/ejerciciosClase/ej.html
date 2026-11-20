@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //empiezas con un string de una frase
+
+        //1. pasa el string a otro almacenandolo por palabras
+        let frase = "Hola mundo desde JavaScript en String";
+        function separarPalabras(frase) {
+            let palabras = frase.split(" ");
+            for (let i = 0; i < palabras.length; i++) {
+                console.log(palabras[i]);
+            }
+        }
+        
+        separarPalabras(frase);
+        
+        //2. pasa el string a otro almacenandolo por letras
+        function separarLetras(frase) {
+            let letras = frase.split("");
+            for (let i = 0; i < letras.length; i++) {
+                console.log(letras[i]);
+            }
+        }
+        
+        // separarLetras(frase);
+
+    </script>
+</body>
+</html>

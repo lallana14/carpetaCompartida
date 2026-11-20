@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objetosMetodos</title>
+</head>
+<body>
+    <script>
+        //sintaxis de creacion de metodos de un objeto
+        // nom_metodo:function(){
+        //    instrucciones
+        //}
+
+        let persona1 = {
+            nombre: "Javier",
+            apellido: "Gonzalez",
+            anio: 1990,
+            nombreCompleto: function(){
+                return this.nombre + " " + this.apellido;
+            }
+        }
+
+        console.log(persona1.nombreCompleto());
+    </script>
+</body>
+</html>

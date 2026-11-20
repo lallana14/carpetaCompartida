@@ -1,0 +1,23 @@
+.bordeMadera {
+    border: solid 20px;/*borde de forma solida y de 20px de grosor */
+    border-image: url("madera.jpg") 15 round;/*direccion de la imagen */
+    padding: 10px;/*espacio entre el contenido y el borde */
+}
+
+.bordeMetal {
+    border: solid 20px;/*borde de forma solida y de 20px de grosor */
+    border-image: url("metal.jpg") 15 round;/*direccion de la imagen */
+    padding: 10px;/*espacio entre el contenido y el borde */
+}
+
+.galeria {
+    display: flex;/*establece un contenedor flexible para los elementos hijos */
+    gap: 2rem;/*establece un espacio de 2rem entre los elementos hijos */
+    align-items: flex-start;/*alinear los elementos hijos al inicio del contenedor */
+}
+
+.galeria img {
+    width: 350px;/*establece el ancho de la imagen a 350px */
+    height: 400px;/*establece la altura de la imagen a 400px */
+    object-fit: cover;/*establece que la imagen se ajuste al contenedor sin distorsionarse */
+}

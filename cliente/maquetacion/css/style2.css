@@ -1,0 +1,228 @@
+.encabezado{
+    text-align: left;
+    font-size: 30px;
+    background-color: #00ff0080;
+    padding: 10px;
+}
+
+
+.menuPrincipal{
+    background-color: black;
+}
+
+.menuPrincipal ul{
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    padding: 15px;
+    margin: 0px;
+}
+
+.menuPrincipal ul li{
+    margin: 15px;
+}
+
+.menuPrincipal ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.reserva{
+    padding: 150px;
+    text-align: center;
+
+    background-image: url("../img/tabla.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 150px;
+    background-position: center;
+}
+
+.reserva h2{
+    color: orange;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.reserva h3{
+    color: orange;
+    font-size: 30px;
+    font-weight: bold;
+}
+.reserva button{
+    color: black;
+    background-color: orange;
+    border: 2px solid darkorange;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+.zonaImagenes{
+    flex-direction: row;
+    display: flex;
+    background-color: rgb(252, 243, 224);
+}
+
+.zonaImagenes article{
+    width: 60%;
+    text-align: center;
+}
+
+.zonaImagenes article img{
+    width: 80%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.zonaImagenes article p{
+    font-size: 20px;
+    padding: 10px;
+    text-align: left;
+}
+
+.zonaImagenes aside{
+    width: 40%;
+}
+
+.zonaImagenes aside h3{
+    text-align: center;
+}
+
+.zonaImagenes aside img{
+    width: 60%;
+    height: 90%;
+    object-fit: cover;
+}
+
+.tablaymas{
+    flex-direction: row;
+    display: flex;
+    align-items: stretch;
+}
+
+.tablaymas article{
+    text-align: center;
+    background-color: #d8d1fa;
+    padding: 30px;
+    width: 60%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.tablaymas article table{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+    height: 50%;
+}
+
+.tablaymas article table tr{
+    height: 20%;
+}
+
+.tablaymas article table td{
+    border: 1px solid #ffffff;
+    padding: 10px;
+}
+
+.rrss{
+    text-align: left;
+    margin-top: auto;
+}
+
+.rrss img{
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+.nA{
+    flex-direction: row;
+    display: flex;
+}
+
+.tablaymas aside{
+    text-align: center;
+    align-items: center;
+    width: 40%;
+}
+
+.formulario{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 30px;
+}
+
+.formulario form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.formulario input{
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+}
+
+.formulario textarea{
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+}
+
+.menu2{
+    background-color: black;
+}
+
+.menu2 ul{
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    padding: 15px;
+    margin: 0px;
+}
+
+.menu2 ul li{
+    margin: 15px;
+}
+
+.menu2 ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.subtitulos{
+    flex-direction: row;
+    display: flex;
+    height: 200px;
+}
+
+.sub1{
+    text-align: center;
+    width: 50%;
+    color: white;
+    background-color:rgba(0, 0, 0, 0.76);
+}
+
+.sub2{
+    text-align: center;
+    width: 50%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.600);
+}
+
+
+.piePagina{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 25px;
+}

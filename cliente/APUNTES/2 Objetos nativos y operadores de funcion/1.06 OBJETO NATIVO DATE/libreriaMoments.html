@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>libreriaMoments</title>
+    <script src="momentsjs.js"></script>
+</head>
+<body>
+    <script>
+        //creacion de fecha actual 
+        console.log(moment().format(""));
+        console.log(moment().format("DD-MM-YYYY"));
+        console.log(moment().format("dddd"));
+        console.log(moment().format("MMMM"));
+
+        let fecha = moment("2026-11-11","YYYY-MM-DD");
+        console.log(fecha.format());
+
+        //añadir 1 dia a la fecha
+        fecha.add(1, 'days');
+        fecha.add(1, 'months');
+        fecha.add(1, 'years');
+        fecha.add(1, 'weeks');
+        fecha.add(1, 'hours');
+        fecha.add(1, 'minutes');
+        fecha.add(1, 'seconds');
+        fecha.add(1, 'milliseconds');
+
+        //restar 1 dia a la fecha
+        fecha.subtract(1, 'days');
+        fecha.subtract(1, 'months');
+        fecha.subtract(1, 'years');
+        fecha.subtract(1, 'weeks');
+        fecha.subtract(1, 'hours');
+        fecha.subtract(1, 'minutes');
+        fecha.subtract(1, 'seconds');
+        fecha.subtract(1, 'milliseconds');
+
+        console.log(fecha.format("DD-MM-YYYY"));
+
+        //calculo entre fechas
+        let fechaInicio = moment("01/10/2025", "DD/MM/YYYY");
+        let fechaFin = moment();
+        let diasDif = fechaFin.diff(fechaInicio, 'months');
+        console.log(diasDif);
+    </script>
+</body>
+</html>

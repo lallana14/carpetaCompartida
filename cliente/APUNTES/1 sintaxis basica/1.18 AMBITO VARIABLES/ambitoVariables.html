@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*VARIABLES LOCALES
+        -se definien dentro de una funcion 
+        -tienen ámbito local en la función
+        -únicamente son accesibles dentro de la función
+        -desaparece cuando finaliza la función
+        -podemos declarar variables con el mismo nombre en diferentes funciones
+        */
+
+        function saludar(){
+            let saludo = "Hola";
+            alert(saludo);
+        }
+        saludar();
+        //alert(saludo); //error
+
+        /*VARIABLES GLOBALES
+        -se definen fuera de las funciones
+        -tienen ámbito global
+        -son accesibles desde dentro y fuera de las funciones
+        -desaparecen cuando se termina de ejecutar el código
+        */
+
+        let despedida = "Adiós";
+        function despedir(){
+            alert(despedida);
+        }
+        despedir();
+        alert(despedida);
+
+        //VARIABLES AUTOÁTICAMENTE GLOBALES
+
+        function preguntar(){
+            pregunta = "¿Qué día es hoy?";
+            alert(pregunta);
+        }
+        preguntar();
+        alert(pregunta);
+
+        //VARIABLES LOCALES Y GLOBALES CON EL MISMO NOMBRE
+
+        let var1 = "Fuera";
+        function lugar(){
+            let var1 = "Dentro";
+            alert(var1);
+        }
+        lugar();
+        alert(var1);
+
+        //VARIABLE GLOBAL REDEFINIDA DENTRO DE UNA FUNCIÓN
+
+        let var2 = "out";
+        function lugar2(){
+            var2 = "in";
+            alert(var2);
+        }
+        alert(var2);
+        lugar2();
+        alert(var2);
+    </script>
+</body>
+</html>

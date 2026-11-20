@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ej2</title>
+</head>
+<body>
+    <script>
+        function ordenaCreciente(array, eliminar){//funcion que ordena de menor a mayor
+            let lrg = array.length;
+            let nuevoArray = [];
+            let menor;
+            let quitar = 0;
+            for(let i = 0; i<lrg; i++){//tratar el array
+                let valores = array.toString();//convertir a cadena para poder usar el metodo Math.min
+                valores = valores.split(",");//convertir a array para poder usar el metodo Math.min
+                for(let j=0; j<valores.length; j++){
+                    valores[j] = parseInt(valores[j]);//convertir a entero
+                }
+                menor = valores[0];//cojo el menor de lo valores
+                cuentaMenores = 1;
+                for(let k=1; k<valores.length; k++){//voy buscando el menor
+                    if(valores[k]<menor){
+                        menor = valores[k];
+                        cuentaMenores = 1;
+                    }else if( valores[k] == menor){
+                        cuentaMenores += 1;
+                    }
+                }
+                // console.log("menor: " + menor);
+                nuevoArray[i] = menor;//lo copio en el nuevo array
+                if(cuentaMenores>1){
+                    for(let l=0; l<cuentaMenores;l++){
+                        array.splice(array.indexOf(menor), 1);//quito el menor en las diferentes posiciones
+                    }
+                    quitar = quitar + cuentaMenores - 1;
+                }else if(cuentaMenores == 1){
+                    array.splice(array.indexOf(menor), 1);//quito el menor
+                }else{
+                    console.log("ERROR")
+                }
+                
+                // console.log(array);
+            }
+            array = nuevoArray;//copiar al array original el nuevo
+            if(eliminar == "si"){
+                array.length = array.length - quitar;
+            }else if(eliminar == "no"){
+                //no hace nada
+            }
+            console.log(array);//mostrar
+            return array;//devuelve el array ordenado
+        }
+
+        function ordenaDecreciente(array, eliminar){//funcion que ordena de mayor a menor
+            let lrg = array.length;
+            let nuevoArray = [];
+            let mayor;
+            let quitar = 0;
+            for(let i = 0; i<lrg; i++){//tratar el array
+                let valores = array.toString();//convertir a cadena para poder usar el metodo Math.min
+                valores = valores.split(",");//convertir a array para poder usar el metodo Math.min
+                for(let j=0; j<valores.length; j++){
+                    valores[j] = parseInt(valores[j]);//convertir a entero
+                }
+                mayor = valores[0];//cojo el mayor de lo valores
+                cuentaMayores = 1;
+                for(let k=1; k<valores.length; k++){//voy buscando el mayor
+                    if(valores[k]>mayor){
+                        mayor = valores[k];
+                        cuentaMayores = 1;
+                    }else if( valores[k] == mayor){
+                        cuentaMayores += 1;
+                    }
+                }
+                // console.log("mayor: " + mayor);
+                nuevoArray[i] = mayor;//lo copio en el nuevo array
+                if(cuentaMayores>1){
+                    for(let l=0; l<cuentaMayores;l++){
+                        array.splice(array.indexOf(mayor), 1);//quito el mayor en las diferentes posiciones
+                    }
+                    quitar = quitar + cuentaMayores - 1;
+                }else if(cuentaMayores == 1){
+                    array.splice(array.indexOf(mayor), 1);//quito el mayor
+                }else{
+                    console.log("ERROR")
+                }
+
+                // console.log(array);
+            }
+            array = nuevoArray;//copiar al array original el nuevo
+            if(eliminar == "si"){
+                array.length = array.length - quitar;
+            }else if(eliminar == "no"){
+                //no hace nada
+            }
+            console.log(array);//mostrar
+            return array;//devuelve el array ordenado
+        }
+
+        function ordena(array, orden, eliminar = "no"){//funcion que ordena el array segun el parametro orden
+            eliminar = eliminar.toLowerCase();//convierte el orden a minusculas
+            if(eliminar == "si"){
+                eliminar = true;
+            }else{
+                eliminar = false;
+            }
+            orden = orden.toLowerCase();//convierte el orden a minusculas
+            if(orden == "creciente"){//compara si es creciente o decreciente
+                return ordenaCreciente(array, eliminar);//caso de creciente
+            }else if(orden == "decreciente"){
+                return ordenaDecreciente(array, eliminar);//caso de decreciente
+            }else{
+                console.log("Error: el parametro 'orden' debe ser 'creciente' o 'decreciente'");//caso de error
+            }
+        }
+
+        let cad = [1,43,63,1,34,67,2,4];
+        console.log(cad);
+        // cad = ordena(cad, "creciente");
+        ordena(cad, "decreciente");
+    </script>  
+</body>
+</html>

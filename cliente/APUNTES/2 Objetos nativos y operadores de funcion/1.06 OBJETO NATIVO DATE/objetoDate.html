@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objetoDate</title>
+</head>
+<body>
+    <script>
+        //creacion fecha actual
+        let actual = new Date();
+        console.log(actual);
+
+        //los meses empiezan en 0
+        //dias de la semana comienzan en 0 (y es el domingo)
+
+        //creacion de fechas con cadenas:
+        let d1 = new Date("Wed Nov 21 2026 12:00:00 GMT+0100 (hora estándar de Europa central)");
+        let d2 = new Date("November 25, 2026 12:00:00");
+        let d3 = new Date("November 19, 2026");//("Nov 19 2026") o ("19 Nov 2026")
+
+        //usando comillas y guiones
+        let d4 = new Date("2026-11-28T12:32:56");
+        let d5 = new Date("2026-11-12");//("2026/11/12") o ("12/11/2026") o ("12-11-2026")
+        let d6 = new Date("2026-07");//dia se pone a 1
+        let d7 = new Date("2026");//mes y dia se ponen a 1
+
+        //creacion de fecha con milisegundos
+        let dms = new Date(864000000);
+
+        //creacion de fechas con numeros
+        let fechaLarga = new Date(2026, 11, 10, 14, 30, 25);
+        let fechaCorta = new Date(2026, 11, 10);
+
+        let fecha = new Date();
+        console.log(fecha.toString());
+        console.log(fecha.toUTCString());
+        console.log(fecha.toDateString());
+        
+        //getters
+        console.log(fecha.getDay() + " " + fecha.getDate() + " " + fecha.getMonth() + " " + fecha.getFullYear() + " " + fecha.getHours() + " " + fecha.getMinutes() + " " + fecha.getSeconds() + " " + fecha.getMilliseconds());
+
+        //setters
+        fecha.setDate(15);
+        fecha.setMonth(8);
+        fecha.setFullYear(1998);
+        fecha.setHours(12);
+        fecha.setMinutes(30);
+        fecha.setSeconds(45);
+        fecha.setMilliseconds(500);
+        console.log(fecha.toString());
+
+        //calculos de fechas
+        let fecha2 = new Date();
+        console.log(fecha2.toString(fecha.setMonth(fecha.getMonth() +3)));//sumas 3 meses a la fecha actual
+    </script>
+</body>
+</html>

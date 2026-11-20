@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pruebasMoments</title>
+    <script src="momentsjs.js"></script>
+</head>
+<body>
+    <script>
+        //para el add y el subtract hay formas de acortar 
+        let fecha = moment();
+        fecha.add(1, 'days');
+        console.log(fecha.format("DD-MM-YYYY"));
+        fecha.subtract(1, 'd');
+        console.log(fecha.format("DD-MM-YYYY"));
+        
+        //days -> d
+        //months -> M
+        //years -> y
+        //hours -> h
+        //minutes -> m
+        //seconds -> s
+        //milliseconds -> ms
+        
+        //tmabien se pueden añadir o restar trimestes, quarters -> Q
+        console.log("trimesrtes");
+        fecha.subtract(1, 'quarters');
+        console.log(fecha.format("DD-MM-YYYY"));
+        fecha.add(1, 'Q');
+        console.log(fecha.format("DD-MM-YYYY"));
+
+        //tambien podemos añadir o restar semanas, weeks -> w
+        console.log("semanas");
+        console.log(fecha.format("dddd"));
+        fecha.subtract(1, 'weeks');
+        console.log(fecha.format("DD-MM-YYYY"));
+        console.log(fecha.format("dddd"));
+
+        //se puede añadir o restar multiples unidades de tiempo a la vez
+        fecha.add(1, 'd').add(1, 'M').add(1, 'y');
+        console.log(fecha.format("DD-MM-YYYY"));
+        fecha.subtract(1, 'd').subtract(1, 'M').subtract(1, 'y');
+        console.log(fecha.format("DD-MM-YYYY"));
+
+        //se puede añadir o restar multiples unidades de tiempo a la vez pasando un objeto
+        fecha.add({d: 1, M: 1, y: 1});
+        console.log(fecha.format("DD-MM-YYYY"));
+
+        //funcion startOf: para settear la unidad que quieras al principio de la unidad de tiempo
+        fecha.startOf('d');
+        console.log(fecha.format("DD-MM-YYYY HH:mm:ss"));
+
+        //funcion endOf: para settear la unidad que quieras al final de la unidad de tiempo
+        fecha.endOf('d');
+        console.log(fecha.format("DD-MM-YYYY HH:mm:ss"));
+
+        //funcion isBefore: para saber si una fecha es anterior a otra
+        let fecha1 = moment("2025-10-01", "YYYY-MM-DD");
+        let fecha2 = moment("2025-10-02", "YYYY-MM-DD");
+        console.log(fecha1.isBefore(fecha2));//true
+        console.log(fecha2.isBefore(fecha1));//false
+
+        //funcion isAfter: para saber si una fecha es posterior a otra
+        //lo contrario a isBefore
+
+        //funcion isSame: para saber si una fecha es igual a otra
+        let fecha3 = moment("2025-10-01", "YYYY-MM-DD");
+        console.log(fecha1.isSame(fecha3));//true
+        console.log(fecha1.isSame(fecha2));//false
+
+        //funcion isBetween: para saber si una fecha esta entre dos fechas
+        let fecha4 = moment("2025-10-03", "YYYY-MM-DD");
+        console.log(fecha4.isBetween(fecha1, fecha2));//false
+        console.log(fecha2.isBetween(fecha1, fecha4));//true
+
+        //funcion isLeast: para saber si una fecha es la menor de un array de fechas
+        let fechas = [fecha1, fecha2, fecha3, fecha4];
+        let fechaMenor = moment.min(fechas);
+        console.log(fechaMenor.format("DD-MM-YYYY"));
+
+        //funcion isGreatest: para saber si una fecha es la mayor de un array de fechas
+        let fechaMayor = moment.max(fechas);
+        console.log(fechaMayor.format("DD-MM-YYYY"));
+
+        //funcion isLeapYear: para saber si un año es bisiesto
+        let fecha5 = moment("2024-02-29", "YYYY-MM-DD");
+        console.log(fecha5.isLeapYear());//true
+        let fecha6 = moment("2023-02-29", "YYYY-MM-DD");
+        console.log(fecha6.isLeapYear());//false
+
+
+
+    </script>
+</body>
+</html>

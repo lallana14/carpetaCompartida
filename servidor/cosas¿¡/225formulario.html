@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tabla de coordenadas</title>
+	<style>
+		table { border-collapse: collapse; margin-top: 1rem; }
+		th, td { border: 1px solid #333; padding: .5rem 1rem; text-align: center; }
+		label { margin-right: 1rem; }
+	</style>
+</head>
+<body>
+	<h1>Tabla de coordenadas</h1>
+	<form id="tablaForm">
+		<label>
+			Filas:
+				<input id="filas" name="filas" type="number" min="1" required>
+		</label>
+		<label>
+			Columnas:
+			<input id="columnas" name="columnas" type="number" min="1" required>
+		</label>
+		<button type="submit">Crear tabla</button>
+	</form>
+
+	<div id="resultado"></div>
+
+	<script>
+		document.getElementById('tablaForm').addEventListener('submit', function (evento) {
+			evento.preventDefault();
+
+			const filas = Number(document.getElementById('filas').value);
+			const columnas = Number(document.getElementById('columnas').value);
+			const tabla = document.createElement('table');
+
+			for (let fila = 0; fila < filas; fila++) {
+				const tr = document.createElement('tr');
+				for (let columna = 0; columna < columnas; columna++) {
+					const celda = document.createElement('td');
+					celda.textContent = `(${fila}, ${columna})`;
+					tr.appendChild(celda);
+				}
+				tabla.appendChild(tr);
+			}
+
+			const resultado = document.getElementById('resultado');
+			resultado.replaceChildren(tabla);
+		});
+	</script>
+</body>
+</html>

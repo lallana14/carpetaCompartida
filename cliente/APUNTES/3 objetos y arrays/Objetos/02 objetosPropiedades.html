@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objetosPropiedades</title>
+</head>
+<body>
+    <script>
+        //sintaxis de acceso a las propiedades de un objeto
+        //1. objeto.propiedad;
+        //2. objeto["propiedad"];
+        //3. objeto[expresion];
+
+        let persona1 = {nombre: "Javier", apellido: "Gonzalez", anio: 1990};
+        let persona2 = {nombre: "x", apellido: "y", anio: 1234};
+        console.log(persona1.nombre);
+        console.log(persona1["apellido"]);
+        let expersion = "anio";
+        console.log(persona1[expersion]);
+
+        //recorrer las propiedades de un objeto
+        //for(nom_variable in nom_objeto){
+        //    nom_objeto[nom_variable];
+        //}
+
+        for(x in persona1){
+            console.log(persona1[x]);
+        }
+
+        //añadir propiedades a un objeto
+        //nom_objeto.nom_propiedad = valor;
+        persona1.nacionalidad = "Española";
+        for(x in persona1){
+            console.log(persona1[x]);
+        }
+        for(x in persona2){
+            console.log(persona2[x]);
+        }
+
+        //eliminar propiedades de un objeto
+        //delete nom_objeto.nom_propiedad;
+        delete persona1.anio;
+        for(x in persona1){
+            console.log(persona1[x]);
+        }
+    </script>
+</body>
+</html>

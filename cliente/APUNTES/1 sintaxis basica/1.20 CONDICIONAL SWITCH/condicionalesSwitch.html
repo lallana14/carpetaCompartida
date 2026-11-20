@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        -se utiliza para hacer diferentes acciones basadas en diferentes condiciones
+        -la condición se evalúa una sola vez
+
+        switch(expresion){
+            case valor1:
+                instrucciones;
+                break;
+            case valor2:
+                instrucciones;
+                break;
+            default:
+                instrucciones;
+        }
+        */
+
+        let nota = 8;
+        switch(nota){
+            case 5:
+                alert("Aprobado");
+                break;
+            case 6:
+                alert("Bien");
+                break;
+            case 7 && 8:
+                alert("Notable");
+                break;
+            case 9 && 10:
+                alert("Sobresaliente");
+                break;
+            default:
+                alert("Suspenso");
+        }
+    </script>
+</body>
+</html>

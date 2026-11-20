@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicioMetodos</title>
+</head>
+<body>
+    <script>
+        function Coche(marca, modelo, anio, kms, cv, matricula, itv, numPropietarios){
+            this.marca = marca;
+            this.modelo = modelo;
+            this.anio = anio;
+            this.kms = kms;
+            this.cv = cv;
+            this.matricula = matricula;
+            this.itv = itv;
+            this.numPropietarios = numPropietarios;
+
+            this.setKilometraje = function(kmAñadir){
+                kms += kmAñadir;
+            }
+
+            this.nuevoPropietario = function(){
+                numPropietarios++;
+            }
+
+            this.rematricular = function(nuevaMatricula){
+                matricula = nuevaMatricula;
+            }
+
+            this.actualizarITV = function(nuevaITV){
+                itv = nuevaITV;
+            }
+
+            this.aniadirCV = function(cvAñadir){
+                cv += cvAñadir;
+            }
+            
+            this.mostarInfo = function(){
+                console.log("Marca: " + marca);
+                console.log("Modelo: " + modelo);
+                console.log("Año: " + anio);
+                console.log("Kilometraje: " + kms);
+                console.log("CV: " + cv);
+                console.log("Matrícula: " + matricula);
+                console.log("Ultima ITV: " + itv);
+                console.log("Número de propietarios: " + numPropietarios);
+                console.log("-----------------------------");
+            }
+        }
+
+        let coche1 = new Coche("Toyota", "Corolla", 2015, 50000, 100, "1234ABC", "2023-05-01", 1);
+
+        coche1.mostarInfo();
+       
+        coche1.nuevoPropietario();
+        coche1.setKilometraje(10000);
+        coche1.rematricular("5678DEF");
+        coche1.actualizarITV("2024-05-01");
+        coche1.aniadirCV(20);
+
+        coche1.mostarInfo();
+    </script>
+</body>
+</html>

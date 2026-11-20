@@ -1,0 +1,52 @@
+.principal_on{
+    background: navy;
+    color: yellow;
+    font-style: bold;
+    align-content: center;
+    size: 100px;
+    width: 500px;
+    border-radius: 15px;
+    font-size: 50px;
+    display: inline;
+    /* damos color al fondo y a la letra
+    la letra en negrita, y alineamos todo a centro
+    damos tamaño y con inline hacemos que se distribuya en una linea */
+}
+
+.principal_on:hover{
+    background-color: yellow;
+    color: navy;
+    /* con el hover: al pasar por encima alternamos los colores */
+}
+
+.menu{
+    background-image: url(menuBlanco.png);
+    width: 830px;
+    height: 194px;
+    border-radius: 25px;
+    background-repeat: none;
+    border: none;
+    /* añadimos una imagen para el menu
+    le damos tamaño y quitamos la repeticion */
+}
+
+.menu:hover{
+    background-image: url(menuNaranja.png);
+    /* al pasar por encima cambia de imagen */
+}
+
+.learn{
+    background-image: url(learnBlanco.png);
+    width: 830px;
+    height: 194px;
+    border-radius: 25px;
+    background-repeat: none;
+    border: none;
+    /* añadimos una imagen para el learn more
+    le damos tamaño y quitamos la repeticion */
+}
+
+.learn:hover{
+    background-image: url(learnMorado.png);
+    /* al pasar por encima cambia de imagen */
+}

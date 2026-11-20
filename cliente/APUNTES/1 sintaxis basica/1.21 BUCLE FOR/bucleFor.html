@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        for(sentencia1; sentencia2; sentencia3){
+            instrucciones;
+        }
+
+        -sentencia1: se ejecuta antes de que empieze el codigo
+        -sentencia2: condicion por la que el bloque de codigo se ejecuta
+        -sentencia3: se ejecuta despues de que acabe el bloque de codigo
+
+        for(i=0; i<10; i++){
+            alert(i);
+        }
+
+        VARIACIONES:
+        1. si omitimos la primera sentencia debemos haber inicializado la variable antes del bucle
+        let i=0;
+        for(; i<10; i++){
+            alert(i);
+        }
+
+        2.si omitimos la segunda sentencia, dentro del codigo debemos poner una sentencia break para que el bucle no sea infinito
+        for(i=0; ; i++){
+            alert(i);
+            if(i==10){
+                break;
+            }
+        }
+        
+        3.si omitimos la tercera sentencia, debemos incrementar/decrementar la variable dentro del bloque de codigo
+        for(i=0; i<10;){
+            alert(i);
+            i++;
+        }
+
+        4. podemos trabajar con 2/mas variables dentro del bucle for
+        for(i=0, j=10; i<10, j>0; i++, j--){
+            alert(i + " " + j);
+        }
+        */
+       for(i=0, j=10; i<10, j>0; i++, j--){
+            console.log(i + " " + j);
+        }
+    </script>
+</body>
+</html>

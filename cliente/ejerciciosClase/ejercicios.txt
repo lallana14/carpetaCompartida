@@ -1,0 +1,17 @@
+1. calculo de imc, crear programa que introduzcas peso y altura
+parar calcularlo: peso (en kg) / altura(en m)^2
+si el imc <18.5 bajo peso
+si 18.5<imc<24.9 peso normal
+si 25<imc<25.9 sobrepeso
+si 30<imc obesidad
+
+2.calculo de la letra del dni
+se coje el valor numerico del dni se divide entre 23,
+se mira el resto (de 0 a 22) buscar letras
+
+3.debes convertir a segundos una medidad de tiempo dada en horas y minutos
+
+4.programa que solicite al usuario el num de km recorridos por su coche
+y le num de litros consumidos, y que muestre el consumo de conbustible/km
+
+5.

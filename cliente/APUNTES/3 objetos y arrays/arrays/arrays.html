@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // //array: almacena en una misma variable multiples valores; valores primitivos, objetos
+        // //se referncian con un indice numerico, el primer elemento es 0
+        // //crear un array
+        // // 1. let nombreArray = [valor1, valor2, valor3];
+        // let animales = ["perro", "gato", "hamster"];
+        // // 2. let nombreArray = new Array(valor1, valor2, valor3);
+        // let animales2 = new Array("perro", "gato", "hamster");
+
+        // //acceso a elementos
+        // let miAnimal = animales[2];
+        // console.log(miAnimal);
+        // console.log(animales);
+
+        // //propiedades
+        // //length: devuelve la cantidad de elementos del array
+        // console.log(animales.length);
+        // for(i=0;i<animales.length;i++){
+        //     console.log(animales[i]);
+        // }
+
+        // //metodos
+        // //Array.isArray(nombreArray): devuelve true si es un objeto de tipo array
+        // console.log(Array.isArray(animales));
+        // //nombreArray instanceof Array: devuelve true o false
+        // console.log(animales instanceof Array);
+
+        // //mostrar el array
+        // //toString(): convierte un array a cadena
+        // console.log(animales.toString());
+        // //join(<separador>)
+        // console.log(animales.join("*"));
+        // console.log("------------------");
+        // //crea array vacio y inserta en las posiciones algun valor
+        // let vect = [];
+        // for(i=0;i<5;i++){
+        //     vect[i] = i*2;
+        //     console.log(vect[i]);
+        // }
+        // console.log("------------------");
+        // //metodos para añadir, extraer o borrar elementos
+        // //pop: extrae ultimo
+        // let ultimo = animales.pop();
+        // console.log(ultimo);
+        // console.log(animales);
+        // //shift: extrae primero
+        // let primero = animales.shift();
+        // console.log(primero);
+        // console.log(animales);
+
+        // //añadir
+        // //push: añade al final
+        // animales.push("pajaro");
+        // console.log(animales);
+        // //unshift: añade al principio 
+        // animales.unshift("conejo");
+        // console.log(animales);
+
+
+        animales = ["perro", "gato", "hamster"];
+        console.log(animales);
+
+        // //splice (posicion insertar/borrar, num elem a borrrar, insertar1, insertar2 ...)
+        // animales.splice(1, 1, "vaca", "toro");
+        // console.log(animales);
+
+        //slice
+        console.log(animales);
+        animales.slice(1);
+        console.log(animales);
+
+        //concat
+        // let masAnimales = ["burro", "perico"];
+        // let todos = animales.concat(masAnimales);
+        // console.log(todos);
+
+        // let animales = ["perro", "gato", "hamster", "conejo", "pajaro", "perro", "hamster"];
+        // console.log(animales);
+        // //indexof(elemento) o indexOf(elemento, posicion desde)
+        // console.log(animales.indexOf("perro",-1));
+        // //lastIndexOf
+        // console.log(animales.lastIndexOf("perro",-3));
+
+        // //invertir el array
+        // let selamina = animales.reverse();
+        // console.log(selamina);
+
+        // //sort
+        // let arrayNums = [1,12,23,43,21,64,78,3,54]
+        // console.log(arrayNums.sort());
+
+        // //fill("elemento")
+        // // animales.fill("gallinas");
+        // console.log(animales);
+
+        // console.log(Math.floor(animales.length/2));
+    </script>
+</body>
+</html>

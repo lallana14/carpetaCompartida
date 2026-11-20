@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios con arrays 2</title>
+    <script src="ejercicios2.js"></script>
+</head>
+<body>
+    <script>
+        let numeros = [1,2,3,4,5,6,7,8,9,0];
+        let letras = ["a","b","c"];
+        console.log("Separados:")
+        console.log(numeros);
+        console.log(letras);
+        console.log("Juntos:");
+        let total = juntarDosArrays(numeros,letras);
+        console.log(total);
+        console.log("---------");
+        let copia = cogeUnCacho(numeros, 2);
+        console.log(copia);
+        console.log("---------");
+        let arrr = modificar(numeros, 2, 3, "abajo", "comedor");
+        console.log(arrr);
+        console.log("---------");
+        console.log(modificar(numeros, 2, 3, "abajo", "comedor"));
+    </script>
+</body>
+</html>

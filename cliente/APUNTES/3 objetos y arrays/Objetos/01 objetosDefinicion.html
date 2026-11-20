@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objetosDefinicion</title>
+</head>
+<body>
+    <script>
+        //1. definir y crear un objeto simple utilizando un literal
+        let persona1 = {
+            nombre: "Francisco",
+            apellido: "Sanchez",
+            anio: 1990
+        }
+
+        //2. definir y crear un objeto simple utilizando la palabra new
+        let persona2 = new Object();
+        persona2.nombre = "Carlos";
+        persona2.apellido = "Gonzalez";
+        persona2.anio = 1991;
+
+        //3. definir un constructor de un objeto y crear objetos del tipo
+        function Persona(nombre, apellido, anio){
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.anio = anio;
+        }
+
+        let persona3 = new Persona("Pedro", "Martinez", 1992);
+        console.log(persona1);
+        console.log(persona2);
+        console.log(persona3);
+    </script>
+</body>
+</html>

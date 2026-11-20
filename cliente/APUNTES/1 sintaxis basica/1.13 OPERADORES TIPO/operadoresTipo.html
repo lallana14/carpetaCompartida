@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // //typeof: devuelve el tipo de dato de una variable
+        // let cadena = "Hola";
+        // alert(typeof cadena);//string
+        // let numero = 5;
+        // alert(typeof numero);//number
+        // let booleano = true;
+        // alert(typeof booleano);//boolean
+        // let sinDefinir;
+        // alert(typeof sinDefinir);//undefined
+        // let nulo = null;
+        // alert(typeof nulo);//object
+        // let lista = [1,2,3];
+        // alert(typeof lista);//object
+        // let funcion = function miFuncion(){alert("Hola");};
+        // alert(typeof funcion);//function
+        // let fecha = new Date;
+        // alert(typeof fecha);//object
+        // let registro = {nombre:"David", apellido:"Martínez", curso:"DAW2"};
+        // alert(typeof registro);//object
+
+        //instanceof: devuelve true si un objeto es una instancia de otro objeto especificado
+        let animales = ["perro", "gato", "conejo"];
+        alert(animales instanceof Object);//true
+        alert(animales instanceof Array);//true
+        alert(animales instanceof Number);//false
+        alert(animales instanceof String);//false
+
+        //nulos vs no deifinidos
+        alert(typeof null);//object
+        alert(typeof undefined);//undefined
+        alert(null == undefined);//true
+        alert(null === undefined);//false
+    </script>
+</body>
+</html>

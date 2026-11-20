@@ -1,0 +1,228 @@
+/* ==========================================================================
+   Biblioteca - estilos comunes
+   Enlazado desde: login, index, libro, gestionBiblioteca y creacionUsuarios
+   ========================================================================== */
+
+:root {
+    --fondo: #f3f5fa;
+    --tarjeta: #ffffff;
+    --texto: #1f2937;
+    --texto-suave: #6b7280;
+    --borde: #d9deea;
+    --acento: #2f5bea;
+    --acento-oscuro: #2447c0;
+    --ok-fondo: #e8f6ee;
+    --ok-texto: #17603a;
+    --error-fondo: #fdecec;
+    --error-texto: #a61b1b;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fondo: #12151c;
+        --tarjeta: #1b2029;
+        --texto: #e6e9f0;
+        --texto-suave: #98a1b3;
+        --borde: #2e3544;
+        --acento: #6f93ff;
+        --acento-oscuro: #8fa9ff;
+        --ok-fondo: #14301f;
+        --ok-texto: #8fdcae;
+        --error-fondo: #3a1a1a;
+        --error-texto: #ff9c9c;
+    }
+}
+
+* { box-sizing: border-box; }
+
+body {
+    position: relative;
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 32px 20px 56px;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+h1 { margin: 0 0 8px; font-size: 1.9rem; }
+h2 { margin: 28px 0 12px; font-size: 1.3rem; }
+p  { margin: 8px 0; }
+
+a { color: var(--acento); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Cabecera / navegación ---------------------------------------------- */
+
+header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--borde);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--borde);
+    font-size: 0.95rem;
+}
+
+/* Botón "cerrar sesión" (index.php y gestionBiblioteca.php) */
+body > a[href="logout.php"],
+header a[href="logout.php"] {
+    float: right;
+    margin: 4px 0 0 12px;
+    padding: 6px 14px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: var(--tarjeta);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+body > a[href="logout.php"]:hover,
+header a[href="logout.php"]:hover {
+    border-color: var(--acento);
+    text-decoration: none;
+}
+
+/* En el catálogo el botón va en la esquina superior derecha */
+body > a[href="logout.php"] {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    float: none;
+    margin: 0;
+}
+
+/* ---- Mensajes ------------------------------------------------------------ */
+
+.error,
+.mensaje {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border-left: 4px solid var(--acento);
+    background: var(--tarjeta);
+    margin: 14px 0;
+}
+.error { background: var(--error-fondo); border-left-color: var(--error-texto); }
+p.error { color: var(--error-texto) !important; }
+
+.mensaje.exito { background: var(--ok-fondo); border-left-color: var(--ok-texto); color: var(--ok-texto); }
+.mensaje.error { background: var(--error-fondo); border-left-color: var(--error-texto); color: var(--error-texto); }
+
+/* ---- Tabla del catálogo -------------------------------------------------- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+th, td {
+    padding: 12px 14px !important;
+    text-align: left;
+    border: 0;
+    border-bottom: 1px solid var(--borde);
+    vertical-align: middle;
+}
+th { background: rgba(47, 91, 234, 0.08); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--texto-suave); }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: rgba(47, 91, 234, 0.05); }
+
+td img { display: block; border-radius: 6px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25); }
+
+/* ---- Formularios --------------------------------------------------------- */
+
+.formulario {
+    max-width: 520px;
+    padding: 24px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+main .formulario { max-width: none; }
+
+.formulario br { display: none; }
+
+.formulario label {
+    display: block;
+    margin-bottom: 14px;
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+.formulario label[for] { margin-bottom: 4px; }
+
+.formulario input[type="text"],
+.formulario input[type="password"],
+.formulario input[type="file"],
+.formulario select,
+.formulario textarea {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 9px 11px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: var(--fondo);
+    color: var(--texto);
+    font: inherit;
+    font-weight: 400;
+}
+.formulario > input[type="text"],
+.formulario > input[type="password"] { margin-bottom: 14px; }
+
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+    outline: 2px solid var(--acento);
+    outline-offset: 1px;
+}
+
+.formulario input[type="submit"],
+.formulario button {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--acento);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.formulario input[type="submit"]:hover,
+.formulario button:hover { background: var(--acento-oscuro); }
+
+/* ---- Alta de libros (gestionBiblioteca.php) ------------------------------ */
+
+#libros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 18px;
+}
+fieldset.libro {
+    margin: 0;
+    padding: 14px 16px 4px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+}
+fieldset.libro legend {
+    padding: 0 8px;
+    font-weight: 700;
+    color: var(--acento);
+}
+
+/* ---- Ficha de libro ------------------------------------------------------ */
+
+strong { font-weight: 700; }

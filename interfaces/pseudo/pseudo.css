@@ -1,0 +1,43 @@
+p::first-letter{
+    font-size: 50px;
+    color: red;
+}
+
+p::first-line{
+    font-style: italic;
+}
+
+input:focus{
+    background-color: green;
+}
+
+table tr:nth-child(even){
+    background-color: lightgray;
+}
+
+img:active{
+    border-color: red;
+    border-width: 5px;
+    border-style: solid;
+}
+
+img:hover{
+    zoom: 250%;
+    border-style: dotted dashed solid double;
+    border-color: blue red green orange;
+    border-width: 5px;
+}
+
+img:link{
+    opacity: 75%;
+    bleed: unset;
+}
+
+a:visited{
+    color: magenta;
+}
+
+a:link{
+    color: orange;
+    text-decoration: none;
+}

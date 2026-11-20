@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        break: salir o saltar fuera de un bucle, finalizandolo
+        */
+
+        for (i=0;i<10;i++){
+            if(i==3){
+                break;
+            }
+            console.log("i = "+i);
+        }
+
+        /*
+        continue: salta hasta la siguiente iteracion del bucle
+        */
+
+        for(j=0; j<10;j++){
+            if( j==3 || j==6 ){
+                continue;
+            }
+            console.log("j = "+j);    
+        }
+
+        /*
+        etiquetas: 
+        */
+
+        let animales = ["perro","gato","conejo"];
+
+        consulta_animales:
+        {
+            console.log(animales[0]);
+            break consulta_animales;
+            console.log(animales[1]);
+            console.log(animales[2]);
+        };
+
+        bucle:
+            for(i=1;i<6;i++){
+                if(i==3){
+                    continue bucle;
+                }
+                console.log("i = "+i);
+            }
+        
+    </script>
+</body>
+</html>

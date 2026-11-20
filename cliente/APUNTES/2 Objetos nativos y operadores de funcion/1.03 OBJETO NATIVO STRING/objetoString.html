@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //INSTANCIACION
+        let daw = "Desarrollo de Aplicaciones Web";//doble comilla
+        let dam = 'Desarrollo de Aplicaciones Multiplataforma';//comilla simple
+        let asir = "Administracion de Sistemas Informáticos en Red: 'ASIR' ";
+        let smr = "Sistemas Microinformaticos y Redes: \"SMR\" ";
+        let ciclos = new String("");
+
+        ciclos += "Hay 3 ciclos de grado superior: \n";
+        ciclos += daw +", "+ dam +", "+ asir +"\n";
+        ciclos += "Hay 1 ciclo de grado medio: \n";
+        ciclos += smr +"\n";
+        console.log(ciclos);
+
+        //PROPIEDADES
+        //length
+        console.log("Numero de caracteres en ciclos: " + ciclos.length);
+        
+        //METODOS
+        //- Búsqueda
+        //CharAt: devuelve el caracter en la posición indicada
+        console.log("Caracter en la posición 5: " + ciclos.charAt(5));
+        //indexOf: devuelve la posición de la primera aparición de un caracter o cadena
+        console.log("Posición de la primera aparición de 'ciclos': " + ciclos.indexOf("ciclos"));
+        //lastIndexOf: devuelve la posición de la última aparición de un caracter o cadena
+        console.log("Posición de la última aparición de 'ciclos': " + ciclos.lastIndexOf("ciclos"));
+        // search: devuelve la posición de la primera aparición de un caracter o cadena, pero con expresiones regulares
+        console.log("Posición de la primera aparición de 'ciclos' con expresiones regulares: " + ciclos.search(/ciclos/));
+        // match: devuelve un array con todas las apariciones de un caracter o cadena, pero con expresiones regulares
+        console.log("Apariciones de 'ciclos' con expresiones regulares: " + ciclos.match(/ciclos/g));
+
+        //- Comparación
+        //localCompare(cadena): devuelve -1(antes), 0(igual) o 1(depués)
+        console.log("Comparación de 'ciclos' con 'ciclos': " + daw.localeCompare(dam));
+
+        //- Incluye, emppieza o termina
+        //includes(cadena): devuelve true si la cadena contiene la cadena indicada, false en caso contrario
+        console.log("¿La cadena contiene 'ciclos'? " + ciclos.includes("ciclos"));
+        //startsWith(cadena): devuelve true si la cadena empieza con la cadena indicada, false en caso contrario
+        console.log("¿La cadena empieza con 'ciclos'? " + ciclos.startsWith("ciclos"));
+        //endsWith(cadena): devuelve true si la cadena termina con la cadena indicada, false en caso contrario
+        console.log("¿La cadena termina con 'ciclos'? " + ciclos.endsWith("ciclos"));
+
+        //- Concatenación y repetición
+        //concat(cadena): devuelve la concatenación de la cadena con la cadena indicada
+        console.log("Concatenación de 'ciclos' con 'ciclos': " + ciclos.concat("ciclos"));
+        //repeat(cantidad): devuelve la cadena repetida la cantidad de veces indicada
+        console.log("Repetición de 'ciclos' 3 veces: " + ciclos.repeat(3));
+
+        //- Extracción
+        //slice(inicio, fin): devuelve una parte de la cadena
+        console.log("Parte de la cadena desde la posición 0 hasta la 5: " + ciclos.slice(0, 5));
+        //substring(inicio, fin): devuelve una parte de la cadena
+        console.log("Parte de la cadena desde la posición 0 hasta la 5: " + ciclos.substring(0, 5));
+        //substr(inicio, longitud): devuelve una parte de la cadena
+        console.log("Parte de la cadena desde la posición 0 y con longitud 5: " + ciclos.substr(0, 5));
+
+        //- Mayúsculas
+        console.log("Cadena en mayúsculas: " + ciclos.toUpperCase());
+        //- Minúsculas
+        console.log("Cadena en minúsculas: " + ciclos.toLowerCase());
+        //- Eliminación de espacios en blanco
+        console.log("Cadena sin espacios en blanco: " + ciclos.trim());
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objetosPrototipos</title>
+</head>
+<body>
+    <script>
+        //crear objeto mediante constructor: persona
+        //tiene nombre, apellido anio, muerte
+        //funcion nombreCompleto
+
+        function Persona(nombre, apellido, anioNac, anioMue){
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.anioNac = anioNac;
+            this.anioMue = anioMue;
+
+            this.nombreCompleto = function(){
+                return this.nombre + " " + this.apellido;
+            }
+
+            this.edadMuerte = function(){
+                return this.anioMue - this.anioNac;
+            }
+        }
+
+        let p1 = new Persona("Ugo", "Dominguez", 1934, 2000);
+        let p2 = new Persona("Jorge", "Esteban", 1872, 1940);
+
+        p1.nacionalidad = "Española";
+        // console.log(p1.nacionalidad);
+        // console.log(p2.nacionalidad);
+
+        // for(x in p1){
+        //     console.log(p1[x]);
+        // }
+
+        // for(x in p2){
+        //     console.log(p2[x]);
+        // }
+
+        console.log(p1.nombreCompleto()+" murió a los "+p1.edadMuerte());
+        console.log(p2.nombreCompleto()+" murió a los "+p2.edadMuerte());
+
+        p1.provincia = "Jaen"//da el valor a un nuevo atributo solo para p1
+
+        Persona.prototype.provincia = "Soria";//da el valor a un nuevo atributo para todos los tipos Persona
+
+        for(x in p2){
+            console.log(p2[x]);
+        }
+
+        p1.nacimiento = function(){//añade el metodo solo a una persona
+            return "El naciemiento de "+p1.nombreCompleto+" fue en "+this.anioNac;
+        }
+
+        Persona.prototype.nacimiento = function(){//añadimos el metodo nacimiento a todos los tipo persona
+            return "El naciemiento de "+p1.nombreCompleto+" fue en "+this.anioNac;
+        }
+
+        console.log(p1.nacimiento());
+
+    </script>
+</body>
+</html>
